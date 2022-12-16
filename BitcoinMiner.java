@@ -175,6 +175,7 @@ public class BitcoinMiner {
                     cookieLabel.setText("Number of bitcoins: " + Math.round(bitcoins * 10) / 10.0);
                     bitcoinRate += 1;
                     rateLabel.setText("Bitcoins per sec: " + bitcoinRate);
+                    BitcoinSound.playSound(0);
                 }
 
                 // update the label with the new number of bitcoins
