@@ -1,25 +1,29 @@
+//imports the Java Sound API
+
+import java.io.File;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+
 public class BitcoinSound {
+    //method that takes in a String audio paramter
+    public static void playSound(String audio) {
+        try {
+            // Open an audio input stream.
+            File soundFile = new File(audio);
+            AudioInputStream audioIn = AudioSystem.getAudioInputStream(soundFile);
 
-    private static double[] pickaxe = StdAudio.read("pickaxe.wav");
-    private static double[] chimps = StdAudio.read("chimps.wav");
-    private static double[] minion = StdAudio.read("minion.wav");
-    private static double[] kittens = StdAudio.read("meow.wav");
-    private static double[] precepter = StdAudio.read("amogus.wav");
-    private static double[] kevinwayne = StdAudio.read("explosion.wav");
+            // Get a sound clip resource.
+            Clip clip = AudioSystem.getClip();
 
-    public static void playSound(int i) {
-        if (i == 0)
-            StdAudio.play(chimps);
-        else if (i == 1)
-            StdAudio.play(minion);
-        else if (i == 2)
-            StdAudio.play(kittens);
-        else if (i == 3)
-            StdAudio.play(precepter);
-        else if (i == 4)
-            StdAudio.play(kevinwayne);
-        else if (i == 5)
-            StdAudio.play(pickaxe);
+            // Open audio clip and load samples from the audio input stream.
+            clip.open(audioIn);
+
+            // Start playing the sound clip.
+            clip.start();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     public static void main(String[] args) {
